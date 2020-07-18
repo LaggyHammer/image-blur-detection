@@ -1,3 +1,16 @@
+# coding: utf-8
+# =====================================================================
+#  Filename:    blur_util.py
+#
+#  py Ver:      python 3.6 or later
+#
+#  Description: Utility functions for the blur detection script(s)
+#
+#  Note: Requires opencv 3.4.2 or later
+#
+#  Author: Ankit Saxena (ankch24@gmail.com)
+# =====================================================================
+
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2

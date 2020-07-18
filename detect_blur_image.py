@@ -1,3 +1,22 @@
+# coding: utf-8
+# =====================================================================
+#  Filename:    detect_blur_image.py
+#
+#  py Ver:      python 3.6 or later
+#
+#  Description: Determines if an image is blurred or not.
+#
+#  Usage: python detect_blur_image.py --image test.png
+#         or
+#         python detect_blur_image.py --image test.png --threshold 40
+#         or
+#         python detect_blur_image.py --image test.png --threshold 40 --test 1
+#
+#  Note: Requires opencv 3.4.2 or later
+#
+#  Author: Ankit Saxena (ankch24@gmail.com)
+# =====================================================================
+
 import argparse
 import numpy as np
 import imutils

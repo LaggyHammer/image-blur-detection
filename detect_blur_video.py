@@ -1,3 +1,24 @@
+# coding: utf-8
+# =====================================================================
+#  Filename:    detect_blur_video.py
+#
+#  py Ver:      python 3.6 or later
+#
+#  Description: Determines if a video/video-stream is blurred or not.
+#
+#  Usage: python detect_blur_video.py
+#         or
+#         python detect_blur_video.py --threshold 40
+#         or
+#         python detect_blur_video.py --video test.mp4
+#         or
+#         python detect_blur_video.py --video test.mp4 --threshold 40
+#
+#  Note: Requires opencv 3.4.2 or later
+#
+#  Author: Ankit Saxena (ankch24@gmail.com)
+# =====================================================================
+
 import argparse
 import cv2
 import imutils
