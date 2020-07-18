@@ -29,10 +29,10 @@ def main(image, threshold, vis, test):
 
     image = np.dstack([gray_image] * 3)
     color = (0, 0, 255) if blur else (0, 255, 0)
-    info = f'Blurry ({mean})' if blur else f'Not Blurry ({mean})'
-    cv2.putText(image, info, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
+    info = f'Blurry ({round(mean, 2)})' if blur else f'Not Blurry ({round(mean, 2)})'
+    cv2.putText(orig_image, info, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
 
-    cv2.imshow("Blur Detection", image)
+    cv2.imshow("Blur Detection", orig_image)
     cv2.waitKey(0)
 
     if test > 0:
