@@ -1,6 +1,5 @@
 import argparse
 import cv2
-import numpy as np
 import imutils
 import time
 from imutils.video import FPS

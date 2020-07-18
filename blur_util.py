@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import cv2
 
 
 def blur_detector(image, size=60, threshold=10, draw=False):
@@ -33,3 +34,23 @@ def blur_detector(image, size=60, threshold=10, draw=False):
     mean = np.mean(mag)
 
     return mean, mean <= threshold
+
+
+def test_detection(image_in, threshold, vis):
+
+    for radius in range(1, 30, 2):
+        image = image_in.copy()
+
+        if radius > 0:
+            image = cv2.GaussianBlur(image, (radius, radius), 0)
+            print(radius)
+            mean, blur = blur_detector(image, threshold=threshold, draw=vis > 0)
+
+            image = np.dstack([image] * 3)
+            color = (0, 0, 255) if blur else (0, 255, 0)
+            info = f'Blurry ({mean})' if blur else f'Not Blurry ({mean})'
+            cv2.putText(image, info, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
+            print(f'[INFO] Kernel: {radius}, Result: {info}')
+
+            cv2.imshow("Blur Testing", image)
+            cv2.waitKey(0)
