@@ -42,8 +42,10 @@ def main(video, threshold):
         frame = imutils.resize(frame, width=500)
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
+        # detect blur
         mean, blur = blur_detector(gray_frame, threshold=threshold)
 
+        # label & display result
         color = (0, 0, 255) if blur else (0, 255, 0)
         info = f'Blurry ({round(mean, 2)})' if blur else f'Not Blurry ({round(mean, 2)})'
         cv2.putText(frame, info, (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 2)
@@ -51,6 +53,7 @@ def main(video, threshold):
         cv2.imshow("Blur Detection", frame)
         key = cv2.waitKey(1) & 0xFF
 
+        # exit if 'q' is pressed
         if key == ord('q'):
             break
 
@@ -60,6 +63,7 @@ def main(video, threshold):
     print(f'[INFO] Elapsed time: {round(fps.elapsed(), 2)}')
     print(f'[INFO] approximate FPS: {round(fps.fps(), 2)}')
 
+    # release endpoint(s) & cleanup
     cv2.destroyAllWindows()
     vs.release()
 
@@ -67,4 +71,5 @@ def main(video, threshold):
 if __name__ == '__main__':
 
     args = get_arguments()
+
     main(video=args.get('video', False), threshold=args['threshold'])

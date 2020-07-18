@@ -21,12 +21,18 @@ def get_arguments():
 
 
 def main(image, threshold, vis, test):
+
+    # read image
     orig_image = cv2.imread(image)
+
+    # resize & convert to grayscale
     orig_image = imutils.resize(orig_image, width=500)
     gray_image = cv2.cvtColor(orig_image, cv2.COLOR_BGR2GRAY)
 
+    # detect blur
     mean, blur = blur_detector(gray_image, threshold=threshold, draw=vis > 0)
 
+    # label & display result
     image = np.dstack([gray_image] * 3)
     color = (0, 0, 255) if blur else (0, 255, 0)
     info = f'Blurry ({round(mean, 2)})' if blur else f'Not Blurry ({round(mean, 2)})'
@@ -36,6 +42,7 @@ def main(image, threshold, vis, test):
     cv2.waitKey(0)
 
     if test > 0:
+        # check at what point the image is considered blurred
         test_detection(image_in=gray_image, threshold=threshold, vis=vis)
 
 
